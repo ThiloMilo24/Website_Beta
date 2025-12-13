@@ -1,0 +1,714 @@
+<!DOCTYPE html>
+<html lang="de" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Holstein & Co | Import Export Deutschland Japan seit 1919</title>
+    <meta name="description" content="Holstein & Co - Ihr Partner für Import und Export zwischen Deutschland und Japan seit über 100 Jahren. Pharma, Kosmetik, Dental und mehr.">
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Inter Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Serif+JP:wght@400;500;600&display=swap" rel="stylesheet">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'japan-red': '#BC002D',
+                        'japan-red-dark': '#8B0022',
+                        'navy': '#1a365d',
+                        'navy-dark': '#0f2744',
+                        'cream': '#faf9f7',
+                    },
+                    fontFamily: {
+                        'inter': ['Inter', 'sans-serif'],
+                        'serif-jp': ['Noto Serif JP', 'serif'],
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+
+        .serif-jp {
+            font-family: 'Noto Serif JP', serif;
+        }
+
+        /* Custom animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .animate-fade-in-up {
+            animation: fadeInUp 0.8s ease-out forwards;
+        }
+
+        .animate-fade-in {
+            animation: fadeIn 1s ease-out forwards;
+        }
+
+        .animation-delay-200 { animation-delay: 0.2s; }
+        .animation-delay-400 { animation-delay: 0.4s; }
+        .animation-delay-600 { animation-delay: 0.6s; }
+
+        /* Scroll reveal */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease-out;
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Japanese pattern overlay */
+        .japan-pattern {
+            background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+        }
+
+        /* Gradient text */
+        .gradient-text {
+            background: linear-gradient(135deg, #BC002D 0%, #1a365d 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        /* Card hover effect */
+        .service-card {
+            transition: all 0.3s ease;
+        }
+
+        .service-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        }
+
+        /* Navigation active state */
+        .nav-link {
+            position: relative;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: #BC002D;
+            transition: width 0.3s ease;
+        }
+
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+        /* Hero gradient */
+        .hero-gradient {
+            background: linear-gradient(135deg, #1a365d 0%, #0f2744 50%, #1a365d 100%);
+        }
+
+        /* Timeline connector */
+        .timeline-line {
+            position: absolute;
+            left: 50%;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: linear-gradient(to bottom, #BC002D, #1a365d);
+            transform: translateX(-50%);
+        }
+
+        @media (max-width: 768px) {
+            .timeline-line {
+                left: 20px;
+            }
+        }
+    </style>
+</head>
+<body class="bg-cream text-gray-800 antialiased">
+
+    <!-- Navigation -->
+    <nav id="navbar" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300 bg-transparent">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <!-- Logo -->
+                <a href="#home" class="flex items-center space-x-3">
+                    <div class="w-10 h-10 bg-japan-red rounded-full flex items-center justify-center">
+                        <span class="text-white font-bold text-lg">H</span>
+                    </div>
+                    <span class="text-xl font-semibold text-white" id="logo-text">Holstein & Co</span>
+                </a>
+
+                <!-- Desktop Navigation -->
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="#home" class="nav-link text-white/90 hover:text-white transition-colors">Start</a>
+                    <a href="#services" class="nav-link text-white/90 hover:text-white transition-colors">Leistungen</a>
+                    <a href="#history" class="nav-link text-white/90 hover:text-white transition-colors">Geschichte</a>
+                    <a href="#team" class="nav-link text-white/90 hover:text-white transition-colors">Team</a>
+                    <a href="#references" class="nav-link text-white/90 hover:text-white transition-colors">Referenzen</a>
+                    <a href="#contact" class="bg-japan-red hover:bg-japan-red-dark text-white px-6 py-2 rounded-full transition-colors">Kontakt</a>
+                </div>
+
+                <!-- Mobile Menu Button -->
+                <button id="mobile-menu-btn" class="md:hidden text-white p-2">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+                    </svg>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-navy-dark/95 backdrop-blur-lg">
+            <div class="px-4 py-6 space-y-4">
+                <a href="#home" class="block text-white py-2">Start</a>
+                <a href="#services" class="block text-white py-2">Leistungen</a>
+                <a href="#history" class="block text-white py-2">Geschichte</a>
+                <a href="#team" class="block text-white py-2">Team</a>
+                <a href="#references" class="block text-white py-2">Referenzen</a>
+                <a href="#contact" class="block text-white py-2">Kontakt</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero-gradient japan-pattern min-h-screen flex items-center relative overflow-hidden">
+        <!-- Decorative elements -->
+        <div class="absolute top-20 right-10 w-64 h-64 bg-japan-red/10 rounded-full blur-3xl"></div>
+        <div class="absolute bottom-20 left-10 w-96 h-96 bg-white/5 rounded-full blur-3xl"></div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-32 relative z-10">
+            <div class="grid lg:grid-cols-2 gap-12 items-center">
+                <div class="text-white">
+                    <p class="text-japan-red font-medium mb-4 animate-fade-in-up opacity-0" style="animation-delay: 0.2s; animation-fill-mode: forwards;">Seit 1919</p>
+                    <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-6 animate-fade-in-up opacity-0" style="animation-delay: 0.4s; animation-fill-mode: forwards;">
+                        Brücke zwischen<br>
+                        <span class="text-japan-red">Deutschland</span> &<br>
+                        <span class="serif-jp">日本</span>
+                    </h1>
+                    <p class="text-lg text-white/80 mb-8 max-w-xl animate-fade-in-up opacity-0" style="animation-delay: 0.6s; animation-fill-mode: forwards;">
+                        Holstein & Co verbindet seit über 100 Jahren zwei Welten. Als Ihr Partner für Import und Export zwischen Deutschland und Japan stehen wir für Vertrauen, Qualität und kulturelles Verständnis.
+                    </p>
+                    <div class="flex flex-wrap gap-4 animate-fade-in-up opacity-0" style="animation-delay: 0.8s; animation-fill-mode: forwards;">
+                        <a href="#services" class="bg-japan-red hover:bg-japan-red-dark text-white px-8 py-3 rounded-full font-medium transition-all hover:shadow-lg hover:shadow-japan-red/30">
+                            Unsere Leistungen
+                        </a>
+                        <a href="#contact" class="border border-white/30 hover:border-white text-white px-8 py-3 rounded-full font-medium transition-all hover:bg-white/10">
+                            Kontakt aufnehmen
+                        </a>
+                    </div>
+                </div>
+
+                <div class="hidden lg:block animate-fade-in opacity-0" style="animation-delay: 1s; animation-fill-mode: forwards;">
+                    <div class="relative">
+                        <!-- Decorative Japanese circle -->
+                        <div class="w-80 h-80 mx-auto relative">
+                            <div class="absolute inset-0 border-2 border-japan-red/30 rounded-full"></div>
+                            <div class="absolute inset-4 border border-white/20 rounded-full"></div>
+                            <div class="absolute inset-0 flex items-center justify-center">
+                                <div class="text-center">
+                                    <p class="text-6xl font-bold text-japan-red">105</p>
+                                    <p class="text-white/80 text-lg mt-2">Jahre Tradition</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Scroll indicator -->
+        <div class="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce">
+            <a href="#services" class="text-white/60 hover:text-white transition-colors">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"/>
+                </svg>
+            </a>
+        </div>
+    </section>
+
+    <!-- What We Do Section -->
+    <section id="services" class="py-24 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16 reveal">
+                <p class="text-japan-red font-medium mb-2">What we do</p>
+                <h2 class="text-3xl md:text-4xl font-bold text-navy mb-4">Unsere Geschäftsbereiche</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">Wir bieten umfassende Dienstleistungen im Import und Export zwischen Deutschland und Japan – mit Expertise in verschiedenen Branchen.</p>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Pharma -->
+                <div class="service-card bg-cream rounded-2xl p-8 reveal">
+                    <div class="w-14 h-14 bg-japan-red/10 rounded-xl flex items-center justify-center mb-6">
+                        <svg class="w-7 h-7 text-japan-red" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"/>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-semibold text-navy mb-3">Pharma</h3>
+                    <p class="text-gray-600">Pharmazeutische Wirkstoffe und Produkte höchster Qualität für den deutschen und japanischen Markt.</p>
+                </div>
+
+                <!-- Kosmetische Rohstoffe -->
+                <div class="service-card bg-cream rounded-2xl p-8 reveal">
+                    <div class="w-14 h-14 bg-japan-red/10 rounded-xl flex items-center justify-center mb-6">
+                        <svg class="w-7 h-7 text-japan-red" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-semibold text-navy mb-3">Kosmetische Rohstoffe</h3>
+                    <p class="text-gray-600">Hochwertige Rohstoffe für die Kosmetikindustrie, von traditionellen japanischen Zutaten bis zu modernen Wirkstoffen.</p>
+                </div>
+
+                <!-- Dentalbedarf -->
+                <div class="service-card bg-cream rounded-2xl p-8 reveal">
+                    <div class="w-14 h-14 bg-japan-red/10 rounded-xl flex items-center justify-center mb-6">
+                        <svg class="w-7 h-7 text-japan-red" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-semibold text-navy mb-3">Dentalbedarf</h3>
+                    <p class="text-gray-600">Innovative dentale Produkte und Materialien für Zahnarztpraxen und Dentallabore.</p>
+                </div>
+
+                <!-- Naturkosmetik -->
+                <div class="service-card bg-cream rounded-2xl p-8 reveal">
+                    <div class="w-14 h-14 bg-japan-red/10 rounded-xl flex items-center justify-center mb-6">
+                        <svg class="w-7 h-7 text-japan-red" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"/>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-semibold text-navy mb-3">Naturkosmetik</h3>
+                    <p class="text-gray-600">Natürliche und nachhaltige Kosmetikprodukte, die östliche Tradition mit westlicher Innovation verbinden.</p>
+                </div>
+
+                <!-- Beratung -->
+                <div class="service-card bg-cream rounded-2xl p-8 reveal">
+                    <div class="w-14 h-14 bg-japan-red/10 rounded-xl flex items-center justify-center mb-6">
+                        <svg class="w-7 h-7 text-japan-red" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-semibold text-navy mb-3">Beratung</h3>
+                    <p class="text-gray-600">Strategische Beratung für den Markteintritt in Japan oder Deutschland – mit kulturellem Know-how.</p>
+                </div>
+
+                <!-- Im- und Export -->
+                <div class="service-card bg-cream rounded-2xl p-8 reveal">
+                    <div class="w-14 h-14 bg-japan-red/10 rounded-xl flex items-center justify-center mb-6">
+                        <svg class="w-7 h-7 text-japan-red" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-semibold text-navy mb-3">Im- und Export</h3>
+                    <p class="text-gray-600">Vollständige Abwicklung aller Import- und Exportprozesse mit Zollabfertigung und Logistik.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- History Section -->
+    <section id="history" class="py-24 bg-navy text-white japan-pattern">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16 reveal">
+                <p class="text-japan-red font-medium mb-2">Unsere Geschichte</p>
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">105 Jahre Tradition</h2>
+                <p class="text-white/70 max-w-2xl mx-auto">Seit 1919 verbinden wir Deutschland und Japan – durch Handel, Partnerschaft und kulturelles Verständnis.</p>
+            </div>
+
+            <div class="relative">
+                <!-- Timeline -->
+                <div class="timeline-line hidden md:block"></div>
+
+                <div class="space-y-16">
+                    <!-- 1919 -->
+                    <div class="flex flex-col md:flex-row items-center reveal">
+                        <div class="md:w-1/2 md:pr-12 md:text-right mb-6 md:mb-0">
+                            <h3 class="text-2xl font-bold text-japan-red mb-2">1919</h3>
+                            <h4 class="text-xl font-semibold mb-3">Gründung in Hamburg</h4>
+                            <p class="text-white/70">Holstein & Co wird in Hamburg gegründet und beginnt den Handel zwischen Deutschland und Japan in der Nachkriegszeit.</p>
+                        </div>
+                        <div class="hidden md:flex w-8 h-8 bg-japan-red rounded-full z-10 items-center justify-center">
+                            <div class="w-3 h-3 bg-white rounded-full"></div>
+                        </div>
+                        <div class="md:w-1/2 md:pl-12"></div>
+                    </div>
+
+                    <!-- 1950s -->
+                    <div class="flex flex-col md:flex-row items-center reveal">
+                        <div class="md:w-1/2 md:pr-12"></div>
+                        <div class="hidden md:flex w-8 h-8 bg-japan-red rounded-full z-10 items-center justify-center">
+                            <div class="w-3 h-3 bg-white rounded-full"></div>
+                        </div>
+                        <div class="md:w-1/2 md:pl-12 mb-6 md:mb-0">
+                            <h3 class="text-2xl font-bold text-japan-red mb-2">1950er</h3>
+                            <h4 class="text-xl font-semibold mb-3">Expansion nach Asien</h4>
+                            <p class="text-white/70">Nach dem Krieg bauen wir unsere Beziehungen zu Japan wieder auf und expandieren in den pharmazeutischen Bereich.</p>
+                        </div>
+                    </div>
+
+                    <!-- 1980s -->
+                    <div class="flex flex-col md:flex-row items-center reveal">
+                        <div class="md:w-1/2 md:pr-12 md:text-right mb-6 md:mb-0">
+                            <h3 class="text-2xl font-bold text-japan-red mb-2">1980er</h3>
+                            <h4 class="text-xl font-semibold mb-3">Diversifizierung</h4>
+                            <p class="text-white/70">Erweiterung des Portfolios um Kosmetik, Dental und weitere Branchen. Aufbau langfristiger Partnerschaften.</p>
+                        </div>
+                        <div class="hidden md:flex w-8 h-8 bg-japan-red rounded-full z-10 items-center justify-center">
+                            <div class="w-3 h-3 bg-white rounded-full"></div>
+                        </div>
+                        <div class="md:w-1/2 md:pl-12"></div>
+                    </div>
+
+                    <!-- Today -->
+                    <div class="flex flex-col md:flex-row items-center reveal">
+                        <div class="md:w-1/2 md:pr-12"></div>
+                        <div class="hidden md:flex w-8 h-8 bg-japan-red rounded-full z-10 items-center justify-center">
+                            <div class="w-3 h-3 bg-white rounded-full"></div>
+                        </div>
+                        <div class="md:w-1/2 md:pl-12 mb-6 md:mb-0">
+                            <h3 class="text-2xl font-bold text-japan-red mb-2">Heute</h3>
+                            <h4 class="text-xl font-semibold mb-3">Tradition trifft Innovation</h4>
+                            <p class="text-white/70">Über 100 Jahre Erfahrung, moderne Beratungsdienstleistungen und ein starkes Netzwerk in beiden Ländern.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Team Section -->
+    <section id="team" class="py-24 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16 reveal">
+                <p class="text-japan-red font-medium mb-2">Unser Team</p>
+                <h2 class="text-3xl md:text-4xl font-bold text-navy mb-4">Geschäftsführung</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">Erfahrene Führungskräfte mit tiefem Verständnis für beide Kulturen.</p>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-5xl mx-auto">
+                <!-- Team Member 1 -->
+                <div class="text-center reveal">
+                    <div class="w-48 h-48 mx-auto mb-6 rounded-full bg-gradient-to-br from-navy to-navy-dark flex items-center justify-center">
+                        <span class="text-5xl text-white/80">👤</span>
+                    </div>
+                    <h3 class="text-xl font-semibold text-navy mb-1">Dr. Thomas Holstein</h3>
+                    <p class="text-japan-red font-medium mb-3">Geschäftsführer</p>
+                    <p class="text-gray-600 text-sm">Dritte Generation der Gründerfamilie. Über 25 Jahre Erfahrung im deutsch-japanischen Handel.</p>
+                </div>
+
+                <!-- Team Member 2 -->
+                <div class="text-center reveal">
+                    <div class="w-48 h-48 mx-auto mb-6 rounded-full bg-gradient-to-br from-navy to-navy-dark flex items-center justify-center">
+                        <span class="text-5xl text-white/80">👤</span>
+                    </div>
+                    <h3 class="text-xl font-semibold text-navy mb-1">Yuki Tanaka</h3>
+                    <p class="text-japan-red font-medium mb-3">Prokuristin Japan</p>
+                    <p class="text-gray-600 text-sm">Leitet unsere Japan-Aktivitäten mit über 20 Jahren Erfahrung in der Pharma- und Kosmetikbranche.</p>
+                </div>
+
+                <!-- Team Member 3 -->
+                <div class="text-center reveal">
+                    <div class="w-48 h-48 mx-auto mb-6 rounded-full bg-gradient-to-br from-navy to-navy-dark flex items-center justify-center">
+                        <span class="text-5xl text-white/80">👤</span>
+                    </div>
+                    <h3 class="text-xl font-semibold text-navy mb-1">Michael Weber</h3>
+                    <p class="text-japan-red font-medium mb-3">Leiter Vertrieb</p>
+                    <p class="text-gray-600 text-sm">Verantwortlich für den europäischen Markt und strategische Partnerschaften.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- References Section -->
+    <section id="references" class="py-24 bg-cream">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16 reveal">
+                <p class="text-japan-red font-medium mb-2">Vertrauen & Qualität</p>
+                <h2 class="text-3xl md:text-4xl font-bold text-navy mb-4">Unsere Partner & Referenzen</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">Wir arbeiten mit führenden Unternehmen in Deutschland und Japan zusammen.</p>
+            </div>
+
+            <!-- Stats -->
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-8 mb-16 reveal">
+                <div class="text-center">
+                    <p class="text-4xl md:text-5xl font-bold text-japan-red mb-2">105+</p>
+                    <p class="text-gray-600">Jahre Erfahrung</p>
+                </div>
+                <div class="text-center">
+                    <p class="text-4xl md:text-5xl font-bold text-japan-red mb-2">200+</p>
+                    <p class="text-gray-600">Partner weltweit</p>
+                </div>
+                <div class="text-center">
+                    <p class="text-4xl md:text-5xl font-bold text-japan-red mb-2">50+</p>
+                    <p class="text-gray-600">Produktkategorien</p>
+                </div>
+                <div class="text-center">
+                    <p class="text-4xl md:text-5xl font-bold text-japan-red mb-2">100%</p>
+                    <p class="text-gray-600">Engagement</p>
+                </div>
+            </div>
+
+            <!-- Testimonials -->
+            <div class="grid md:grid-cols-2 gap-8 reveal">
+                <div class="bg-white rounded-2xl p-8 shadow-sm">
+                    <div class="flex items-center mb-4">
+                        <div class="text-japan-red text-2xl mr-2">❝</div>
+                    </div>
+                    <p class="text-gray-700 mb-6 italic">"Holstein & Co ist seit Jahrzehnten unser zuverlässiger Partner für den japanischen Markt. Die kulturelle Kompetenz und das Netzwerk sind unübertroffen."</p>
+                    <div class="flex items-center">
+                        <div class="w-12 h-12 bg-navy rounded-full flex items-center justify-center text-white font-bold mr-4">PH</div>
+                        <div>
+                            <p class="font-semibold text-navy">Pharma Deutschland GmbH</p>
+                            <p class="text-gray-500 text-sm">Langjähriger Partner</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-2xl p-8 shadow-sm">
+                    <div class="flex items-center mb-4">
+                        <div class="text-japan-red text-2xl mr-2">❝</div>
+                    </div>
+                    <p class="text-gray-700 mb-6 italic">"Die Expertise von Holstein & Co hat uns den Markteintritt in Deutschland erheblich erleichtert. Ein vertrauenswürdiger Partner."</p>
+                    <div class="flex items-center">
+                        <div class="w-12 h-12 bg-navy rounded-full flex items-center justify-center text-white font-bold mr-4 serif-jp text-lg">東</div>
+                        <div>
+                            <p class="font-semibold text-navy">Tokyo Cosmetics Inc.</p>
+                            <p class="text-gray-500 text-sm">Partner seit 2015</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-24 bg-navy text-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid lg:grid-cols-2 gap-12">
+                <div class="reveal">
+                    <p class="text-japan-red font-medium mb-2">Kontakt</p>
+                    <h2 class="text-3xl md:text-4xl font-bold mb-6">Lassen Sie uns sprechen</h2>
+                    <p class="text-white/70 mb-8">Wir freuen uns auf Ihre Anfrage. Kontaktieren Sie uns für eine unverbindliche Beratung zu Ihren Import- und Export-Projekten.</p>
+
+                    <div class="space-y-6">
+                        <div class="flex items-start">
+                            <div class="w-12 h-12 bg-japan-red/20 rounded-lg flex items-center justify-center mr-4 flex-shrink-0">
+                                <svg class="w-6 h-6 text-japan-red" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/>
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/>
+                                </svg>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold mb-1">Adresse</h4>
+                                <p class="text-white/70">Gertrudenstr. 3<br>20095 Hamburg<br>Deutschland</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start">
+                            <div class="w-12 h-12 bg-japan-red/20 rounded-lg flex items-center justify-center mr-4 flex-shrink-0">
+                                <svg class="w-6 h-6 text-japan-red" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+                                </svg>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold mb-1">E-Mail</h4>
+                                <p class="text-white/70">info@holstein.de</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start">
+                            <div class="w-12 h-12 bg-japan-red/20 rounded-lg flex items-center justify-center mr-4 flex-shrink-0">
+                                <svg class="w-6 h-6 text-japan-red" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/>
+                                </svg>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold mb-1">Telefon</h4>
+                                <p class="text-white/70">+49 (0) 40 123 456 789</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Contact Form -->
+                <div class="reveal">
+                    <form class="bg-white/10 backdrop-blur-sm rounded-2xl p-8">
+                        <div class="grid md:grid-cols-2 gap-6 mb-6">
+                            <div>
+                                <label class="block text-sm font-medium mb-2" for="name">Name</label>
+                                <input type="text" id="name" class="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg focus:outline-none focus:border-japan-red transition-colors text-white placeholder-white/50" placeholder="Ihr Name">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium mb-2" for="company">Unternehmen</label>
+                                <input type="text" id="company" class="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg focus:outline-none focus:border-japan-red transition-colors text-white placeholder-white/50" placeholder="Ihr Unternehmen">
+                            </div>
+                        </div>
+
+                        <div class="mb-6">
+                            <label class="block text-sm font-medium mb-2" for="email">E-Mail</label>
+                            <input type="email" id="email" class="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg focus:outline-none focus:border-japan-red transition-colors text-white placeholder-white/50" placeholder="ihre@email.de">
+                        </div>
+
+                        <div class="mb-6">
+                            <label class="block text-sm font-medium mb-2" for="subject">Betreff</label>
+                            <select id="subject" class="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg focus:outline-none focus:border-japan-red transition-colors text-white">
+                                <option value="" class="text-gray-800">Bitte wählen...</option>
+                                <option value="import" class="text-gray-800">Import nach Deutschland</option>
+                                <option value="export" class="text-gray-800">Export nach Japan</option>
+                                <option value="consulting" class="text-gray-800">Beratung</option>
+                                <option value="other" class="text-gray-800">Sonstiges</option>
+                            </select>
+                        </div>
+
+                        <div class="mb-6">
+                            <label class="block text-sm font-medium mb-2" for="message">Nachricht</label>
+                            <textarea id="message" rows="4" class="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg focus:outline-none focus:border-japan-red transition-colors text-white placeholder-white/50 resize-none" placeholder="Ihre Nachricht..."></textarea>
+                        </div>
+
+                        <button type="submit" class="w-full bg-japan-red hover:bg-japan-red-dark text-white font-medium py-3 rounded-lg transition-colors">
+                            Nachricht senden
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-navy-dark text-white py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-4 gap-8 mb-8">
+                <div class="md:col-span-2">
+                    <div class="flex items-center space-x-3 mb-4">
+                        <div class="w-10 h-10 bg-japan-red rounded-full flex items-center justify-center">
+                            <span class="text-white font-bold text-lg">H</span>
+                        </div>
+                        <span class="text-xl font-semibold">Holstein & Co</span>
+                    </div>
+                    <p class="text-white/60 max-w-md">Ihr Partner für Import und Export zwischen Deutschland und Japan seit 1919. Tradition, Vertrauen und Expertise.</p>
+                </div>
+
+                <div>
+                    <h4 class="font-semibold mb-4">Schnellzugriff</h4>
+                    <ul class="space-y-2 text-white/60">
+                        <li><a href="#services" class="hover:text-white transition-colors">Leistungen</a></li>
+                        <li><a href="#history" class="hover:text-white transition-colors">Geschichte</a></li>
+                        <li><a href="#team" class="hover:text-white transition-colors">Team</a></li>
+                        <li><a href="#contact" class="hover:text-white transition-colors">Kontakt</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="font-semibold mb-4">Rechtliches</h4>
+                    <ul class="space-y-2 text-white/60">
+                        <li><a href="#" class="hover:text-white transition-colors">Impressum</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Datenschutz</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">AGB</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center">
+                <p class="text-white/60 text-sm">&copy; 2024 Holstein & Co. Alle Rechte vorbehalten.</p>
+                <p class="text-white/40 text-sm mt-2 md:mt-0">Made with ❤️ in Hamburg & Tokyo</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script>
+        // Mobile menu toggle
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Close mobile menu on link click
+        mobileMenu.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+            });
+        });
+
+        // Navbar scroll effect
+        const navbar = document.getElementById('navbar');
+        const logoText = document.getElementById('logo-text');
+
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 100) {
+                navbar.classList.add('bg-navy/95', 'backdrop-blur-lg', 'shadow-lg');
+                navbar.classList.remove('bg-transparent');
+            } else {
+                navbar.classList.remove('bg-navy/95', 'backdrop-blur-lg', 'shadow-lg');
+                navbar.classList.add('bg-transparent');
+            }
+        });
+
+        // Scroll reveal animation
+        const revealElements = document.querySelectorAll('.reveal');
+
+        const revealOnScroll = () => {
+            revealElements.forEach(element => {
+                const elementTop = element.getBoundingClientRect().top;
+                const windowHeight = window.innerHeight;
+
+                if (elementTop < windowHeight - 100) {
+                    element.classList.add('active');
+                }
+            });
+        };
+
+        window.addEventListener('scroll', revealOnScroll);
+        window.addEventListener('load', revealOnScroll);
+
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Form submission (demo)
+        const form = document.querySelector('form');
+        form.addEventListener('submit', (e) => {
+            e.preventDefault();
+            alert('Vielen Dank für Ihre Nachricht! Wir werden uns in Kürze bei Ihnen melden.');
+            form.reset();
+        });
+    </script>
+</body>
+</html>
